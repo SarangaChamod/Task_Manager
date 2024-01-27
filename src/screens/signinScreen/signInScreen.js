@@ -13,7 +13,8 @@ import CustomInput from '../../components/customInput';
 import CustomButton from '../../components/customButton/customButton';
 import CustomTextButton from '../../components/customButton/customTextButton';
 
-const SignInScreen = () => {
+const SignInScreen = (props) => {
+  console.log(props);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -58,7 +59,7 @@ const SignInScreen = () => {
         />
         <View style={styles.fpassword}>
           <CustomTextButton text="Reset Password"
-          onPress={onResetPressed}/>
+          onPress={() => props.navigation.navigate('ResetPassword')}/>
         </View>
 
         <CustomButton buttonText="Login" onPress={onLogInPressed} />
@@ -66,14 +67,14 @@ const SignInScreen = () => {
         <View style={styles.signupButtonView}>
           <Text style={styles.signupButtonTitle}>New to Task Manager?</Text>
           <CustomTextButton text="Sign Up"
-          onPress={onSignupPressed}/>
+          onPress={() => props.navigation.navigate('Signup')}/>
         </View>
       </View>
     </KeyboardAwareScrollView>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
   scrollViewContainer: {
     flex: 1,
   },
