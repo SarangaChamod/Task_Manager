@@ -21,9 +21,9 @@ function App(): React.JSX.Element {
     <SafeAreaView style={[styles.root, backgroundStyle]}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Signup'>
-          <Stack.Screen name="Signup" component={SignupScreen} />
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} options={{headerShown:false}}/>
+          <Stack.Screen name="SignIn" component={SignInScreen} options={{headerShown:false}}/>
+          <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

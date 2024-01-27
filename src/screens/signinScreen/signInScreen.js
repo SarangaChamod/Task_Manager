@@ -22,8 +22,6 @@ const SignInScreen = (props) => {
   const imageHeight = height * 0.3;
 
   const onLogInPressed = () => console.log('Clicked Login Button');
-  const onResetPressed = () => console.log('Clicked Reset Password Button');
-  const onSignupPressed = () => console.log('Clicked Sign Up Button');
 
   return (
     <KeyboardAwareScrollView

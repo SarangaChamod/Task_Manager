@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import {useWindowDimensions} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native'; // Import NavigationContainer
 
 import {createUser} from './authFunctions';
 import CustomInput from '../../components/customInput';
 import CustomButton from '../../components/customButton/customButton';
 import CustomTextButton from '../../components/customButton/customTextButton';
-import SignInScreen from '../signinScreen/signInScreen';
-import {useNavigation} from '@react-navigation/native';
+
 
 const SignupScreen = (props) => {
   console.log(props);
