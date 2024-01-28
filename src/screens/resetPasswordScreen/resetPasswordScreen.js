@@ -7,7 +7,7 @@ import CustomButton from '../../components/customButton/customButton';
 const MyComponent = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.title}>
+      {/* <View style={styles.title}>
         <AntDesign
           name="left"
           size={30}
@@ -15,9 +15,9 @@ const MyComponent = () => {
           style={[styles.back, {fontWeight: 'bold'}]}
         />
         <Text style={styles.titleText}>Reset Password</Text>
-      </View>
+      </View> */}
       <Text style={styles.subTitleText}>
-        {' '}
+        
         Enter your email address and new password for password reset
       </Text>
       <View style={styles.Inputbox}>
@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   subTitleText: {
-    marginTop: 15,
+    marginTop: 10,
   },
   Inputbox: {
-    marginTop: 40,
+    marginTop: 20,
   },
   InputTitle: {
     fontSize: 15,

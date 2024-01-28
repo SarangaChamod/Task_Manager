@@ -6,13 +6,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignupScreen from './src/screens/signUpScreen/signupScreen';
 import SignInScreen from './src/screens/signinScreen/signInScreen';
 import ResetPasswordScreen from './src/screens/resetPasswordScreen/resetPasswordScreen';
+import DashboardScreen from './src/screens/DashboardScreen/DashboardScreen';
 
 
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const Stack = createStackNavigator();
-  
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -20,10 +21,20 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView style={[styles.root, backgroundStyle]}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Signup'>
-          <Stack.Screen name="Signup" component={SignupScreen} options={{headerShown:false}}/>
-          <Stack.Screen name="SignIn" component={SignInScreen} options={{headerShown:false}}/>
-          <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{headerShown:false}}/>
+        <Stack.Navigator initialRouteName='SignIn'>
+          <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="DashboardScreen" component={DashboardScreen} options={{ headerShown: false }} />
+          <Stack.Screen
+            name="ResetPassword"
+            component={ResetPasswordScreen}
+            options={{
+              title: "Reset Password",
+              headerTitleStyle: {
+                fontSize: 23,
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -33,7 +44,7 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    // backgroundColor: '#FAFAFA',
   },
 });
 

@@ -1,6 +1,5 @@
 // authFunctions.js
 import auth from '@react-native-firebase/auth';
-import {ToastAndroid} from 'react-native';
 import ToastMessage from '../../components/ToastMessage/toastMessage';
 
 export const createUser = (email, password) => {

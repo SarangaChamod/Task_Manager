@@ -1,19 +1,16 @@
 // signInScreen.js
 
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native';
+import auth from '@react-native-firebase/auth';
+
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CustomInput from '../../components/customInput';
 import CustomButton from '../../components/customButton/customButton';
 import CustomTextButton from '../../components/customButton/customTextButton';
+import ToastMessage from '../../components/ToastMessage/toastMessage';
 
-const SignInScreen = (props) => {
+const SignInScreen = props => {
   console.log(props);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +18,22 @@ const SignInScreen = (props) => {
   const {height} = useWindowDimensions();
   const imageHeight = height * 0.3;
 
-  const onLogInPressed = () => console.log('Clicked Login Button');
+  const userSignIn = () => {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        props.navigation.navigate('DashboardScreen');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          ToastMessage({message: 'That email address is already in use!'});
+        }
+        if (error.code === 'auth/invalid-email') {
+          ToastMessage({message: 'That email address is invalid!'});
+        }
+        console.log(error);
+      });
+  };
 
   return (
     <KeyboardAwareScrollView
@@ -56,23 +68,27 @@ const SignInScreen = (props) => {
           secureTextEntry={true}
         />
         <View style={styles.fpassword}>
-          <CustomTextButton text="Reset Password"
-          onPress={() => props.navigation.navigate('ResetPassword')}/>
+          <CustomTextButton
+            text="Reset Password"
+            onPress={() => props.navigation.navigate('ResetPassword')}
+          />
         </View>
 
-        <CustomButton buttonText="Login" onPress={onLogInPressed} />
+        <CustomButton buttonText="Login" onPress={userSignIn} />
 
         <View style={styles.signupButtonView}>
           <Text style={styles.signupButtonTitle}>New to Task Manager?</Text>
-          <CustomTextButton text="Sign Up"
-          onPress={() => props.navigation.navigate('Signup')}/>
+          <CustomTextButton
+            text="Sign Up"
+            onPress={() => props.navigation.navigate('Signup')}
+          />
         </View>
       </View>
     </KeyboardAwareScrollView>
   );
 };
 
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
   scrollViewContainer: {
     flex: 1,
   },
