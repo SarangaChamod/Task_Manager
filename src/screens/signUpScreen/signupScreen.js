@@ -6,6 +6,7 @@ import {createUser} from './authFunctions';
 import CustomInput from '../../components/customInput';
 import CustomButton from '../../components/customButton/customButton';
 import CustomTextButton from '../../components/customButton/customTextButton';
+import ToastMessage from '../../components/ToastMessage/toastMessage';
 
 
 const SignupScreen = (props) => {
@@ -19,7 +20,7 @@ const SignupScreen = (props) => {
 
   const onSignUpPressed = () => {
     if (password !== rePassword) {
-      console.log('Passwords do not match.');
+      ToastMessage({message: 'Passwords do not match.'});
       return;
     }
 

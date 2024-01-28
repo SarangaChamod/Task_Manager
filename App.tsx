@@ -29,10 +29,11 @@ function App(): React.JSX.Element {
             name="ResetPassword"
             component={ResetPasswordScreen}
             options={{
-              title: "Reset Password",
-              headerTitleStyle: {
-                fontSize: 23,
-              },
+              // title: "Reset Password",
+              // headerTitleStyle: {
+              //   fontSize: 23,
+              // },
+              headerShown: false
             }}
           />
         </Stack.Navigator>
